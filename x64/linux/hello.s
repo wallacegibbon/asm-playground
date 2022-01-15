@@ -1,26 +1,20 @@
-	// this program is not fully functioning yet.
-	// the `sys_write` is not working, but `sys_exit` works.
-	.balign	8
-	.data
-_info:
-	.string "hello, world!\n"
+	section	.data
+	info db "hello, world!", 10
 
-	.balign	8
-	.text
-	.globl _start
+	section	.text
+	global	_start
 _start:
-	// syscall id is stored in rax
-	mov	$1, %rax
-	// arguments are stored in: rdi, rsi, rdx, r10, r8, r9
-	// sys_write
-	mov	$1, %rdi
-	mov	_info, %rsi
-	mov	$14, %rdx
+	;; syscall id is stored in rax
+	mov	rax, 1
+	;; arguments are stored in: rdi, rsi, rdx, r10, r8, r9
+	;; sys_write
+	mov	rdi, 1
+	mov	rsi, info
+	mov	rdx, 14
 	syscall
 
-	// sys_exit
-	mov	$60, %rax
-	mov	$2, %rdi
+	;; sys_exit
+	mov	rax, 60
+	mov	rdi, 2
 	syscall
-
 
