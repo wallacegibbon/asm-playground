@@ -1,3 +1,4 @@
+	;; the gas version is not working properly, this nasm version works.
 	section	.data
 	info db "hello, world!", 10
 
